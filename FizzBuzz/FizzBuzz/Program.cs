@@ -13,7 +13,7 @@ namespace FizzBuzz
         static void Execute()
         {
             //TODO:  Implement FizzBuzz
-            int finalNumber = 100;
+            int finalNumber = 1000000000;
             for(int i = 1; i <= finalNumber; i++)
             {
                 if(i%3 == 0 && i%5 == 0)
