@@ -10,6 +10,9 @@ namespace testing
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(2D + 2.3D);
+            Console.ReadLine();
+
         }
     }
 }
