@@ -7,21 +7,80 @@ namespace Warmups.BLL
 
         public string StringTimes(string str, int n)
         {
+            string MultipliedString = "";
+            for (int i = 0; i < n; i++)
+            {
+                MultipliedString += str;
+            }
+            return MultipliedString;
             throw new NotImplementedException();
         }
 
         public string FrontTimes(string str, int n)
         {
+            string FinalString = "";
+            if (str.Length < 3)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    FinalString += str;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    FinalString += str.Substring(0, 3);
+                }
+            }
+            return FinalString;
             throw new NotImplementedException();
         }
 
         public int CountXX(string str)
         {
+            int FinalCountOfX = 0;
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                if (str.Substring(i, 2) == "xx")
+                {
+                    FinalCountOfX += 1;
+                }
+            }
+            return FinalCountOfX;
             throw new NotImplementedException();
         }
-
+        //COME BACK
         public bool DoubleX(string str)
         {
+            bool IsDouble;
+            int IndexOfFirstX = 0;
+            bool FoundFirstX = false;
+            while (!FoundFirstX)
+            {
+                for(int i = 0; i < str.Length -1; i++)
+                {
+                    if(str.Substring(i,1) == "x")
+                    {
+                        IndexOfFirstX = i;
+                        FoundFirstX = true;
+                        break;
+                    }
+                }
+                if(FoundFirstX == false)
+                {
+                    return false;
+                }
+            }
+            if(str.Substring(IndexOfFirstX + 1, 1) == "x")
+            {
+                IsDouble = true;
+            }
+            else
+            {
+                IsDouble = false;
+            }
+            return IsDouble;
             throw new NotImplementedException();
         }
 

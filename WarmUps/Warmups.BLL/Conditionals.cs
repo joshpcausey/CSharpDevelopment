@@ -228,7 +228,7 @@ namespace Warmups.BLL
                 }
                 else
                 {
-                    if (str.Substring(0, 3) == "hi,")
+                    if (str.Substring(2, 3) == "hi,")
                     {
                         StartsWithHi = true;
                     }
