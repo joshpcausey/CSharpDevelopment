@@ -282,8 +282,7 @@ namespace Warmups.BLL
 
         public bool SoAlone(int a, int b)
         {
-            //Did not work with b > 12 && b < 20
-            if (a > 12 && a < 20 ^ b < 20 && b > 12)
+            if ((a > 12 && a < 20) ^ (b > 12 && b < 20))
             {
                 return true;
             }
@@ -327,32 +326,115 @@ namespace Warmups.BLL
         public string StartOz(string str)
         {
             string FinalString;
+            if (str.Length > 2)
+            {
+                if (str.Substring(0, 1) == "o" && str.Substring(1, 1) == "z")
+                {
+                    FinalString = str.Substring(0, 2);
+                }
+                else if (str.Substring(0, 1) == "o")
+                {
+                    FinalString = str.Substring(0, 1);
+                }
+                else if (str.Substring(1, 1) == "z")
+                {
+                    FinalString = str.Substring(1, 1);
+                }
+                else
+                {
+                    FinalString = "";
+                }
+            }
+            else
+            {
+                FinalString = "";
+            }
             return FinalString;
             throw new NotImplementedException();
         }
 
         public int Max(int a, int b, int c)
         {
+            int MaxNumber;
+            MaxNumber = Math.Max(a, Math.Max(b, c));
+            return MaxNumber;
             throw new NotImplementedException();
         }
 
         public int Closer(int a, int b)
         {
+            int FinalInt;
+            int ADistanceFrom10 = Math.Abs(10 - a);
+            int BDistanceFrom10 = Math.Abs(10 - b);
+            if (ADistanceFrom10 == BDistanceFrom10)
+            {
+                FinalInt = 0;
+            }
+            else if (ADistanceFrom10 < BDistanceFrom10)
+            {
+                FinalInt = a;
+            }
+            else
+            {
+                FinalInt = b;
+            }
+            return FinalInt;
             throw new NotImplementedException();
         }
 
         public bool GotE(string str)
         {
+            bool isBetween1And3;
+            int count = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str.Substring(i, 1) == "e")
+                {
+                    count++;
+                }
+            }
+            if (count < 4 && count > 0)
+            {
+                isBetween1And3 = true;
+            }
+            else
+            {
+                isBetween1And3 = false;
+            }
+            return isBetween1And3;
             throw new NotImplementedException();
         }
 
         public string EndUp(string str)
         {
+            string FinalString;
+            if (str.Length > 3)
+            {
+                int BreakPoint = str.Length - 3;
+                string UpperCasePart = str.Substring(BreakPoint, 3);
+                UpperCasePart = UpperCasePart.ToUpper();
+                string LowerCasePart = str.Substring(0, BreakPoint);
+                LowerCasePart.ToLower();
+                FinalString = LowerCasePart + UpperCasePart;
+            }
+            else
+            {
+                FinalString = str.ToUpper();
+            }
+            return FinalString;
             throw new NotImplementedException();
         }
 
         public string EveryNth(string str, int n)
         {
+            string FinalString;
+            string TempString = "";
+            for (int i = 0; i < str.Length; i += n)
+            {
+                TempString += str.Substring(i, 1);
+            }
+            FinalString = TempString;
+            return FinalString;
             throw new NotImplementedException();
         }
     }
