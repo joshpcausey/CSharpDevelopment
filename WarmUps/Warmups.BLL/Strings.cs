@@ -120,21 +120,72 @@ namespace Warmups.BLL
 
         public string TakeTwoFromPosition(string str, int n)
         {
+            if (n + 2 > str.Length)
+            {
+                return str.Substring(0, 2);
+            }
+            else
+            {
+                return str.Substring(n, 2);
+            }
             throw new NotImplementedException();
         }
 
         public bool HasBad(string str)
         {
+            if (str.Length > 3)
+            {
+                if (str.Substring(0, 3) == "bad" || str.Substring(1, 3) == "bad")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
             throw new NotImplementedException();
         }
 
         public string AtFirst(string str)
         {
+            if (str.Length > 1)
+            {
+                return str.Substring(0, 2);
+            }
+            else if (str == "")
+            {
+                return "@@";
+            }
+            else
+            {
+                return str.Substring(0, 1) + "@";
+            }
             throw new NotImplementedException();
         }
 
         public string LastChars(string a, string b)
         {
+            if (a == "" && b == "")
+            {
+                return "@@";
+            }
+            else if (a == "")
+            {
+                return "@" + b.Substring(0, b.Length - 1);
+            }
+            else if (b == "")
+            {
+                return a.Substring(0, 1) + "@";
+            }
+            else
+            {
+                return a.Substring(0, 1) + b.Substring(b.Length - 1, 1);
+            }
             throw new NotImplementedException();
         }
 
