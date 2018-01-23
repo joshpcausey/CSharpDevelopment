@@ -191,31 +191,130 @@ namespace Warmups.BLL
 
         public string ConCat(string a, string b)
         {
+            if (a == "")
+            {
+                return b;
+            }
+            else if (b == "")
+            {
+                return a;
+            }
+            else if (a.Substring(a.Length - 1, 1) == b.Substring(0, 1))
+            {
+                return a.Substring(0, a.Length - 1) + b;
+            }
+            else
+            {
+                return a + b;
+            }
             throw new NotImplementedException();
         }
 
         public string SwapLast(string str)
         {
+            if (str.Length > 2)
+            {
+                return str.Substring(0, str.Length - 2) + str.Substring(str.Length - 1, 1) + str.Substring(str.Length - 2, 1);
+            }
+            else if (str.Length == 2)
+            {
+                return str.Substring(1, 1) + str.Substring(0, 1);
+            }
+            else
+            {
+                return str;
+            }
             throw new NotImplementedException();
         }
 
         public bool FrontAgain(string str)
         {
+            if (str.Length > 3)
+            {
+                if (str.Substring(0, 2) == str.Substring(str.Length - 2, 2))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
             throw new NotImplementedException();
         }
 
         public string MinCat(string a, string b)
         {
+            if (a == "" || b == "")
+            {
+                return "";
+            }
+            else if (a.Length > b.Length)
+            {
+                return a.Substring(a.Length - b.Length, b.Length) + b;
+            }
+            else if (b.Length > a.Length)
+            {
+                return a + b.Substring(b.Length - a.Length, a.Length);
+            }
             throw new NotImplementedException();
         }
 
         public string TweakFront(string str)
         {
+            if (str == "")
+            {
+                return "";
+            }
+            else if (str.Length > 3)
+            {
+                if (str.Substring(0, 1) == "a" && str.Substring(1, 1) == "b")
+                {
+                    return str;
+                }
+                else if (str.Substring(0, 1) == "a")
+                {
+                    return str.Substring(0, 1) + str.Substring(2, str.Length - 2);
+                }
+                else if (str.Substring(1, 1) == "b")
+                {
+                    return str.Substring(1, str.Length - 1);
+                }
+                else
+                {
+                    return str.Substring(2, str.Length - 2);
+                }
+            }
             throw new NotImplementedException();
         }
 
         public string StripX(string str)
         {
+            if (str == "" || str == "x")
+            {
+                return "";
+            }
+            else if (str.Substring(0, 1) == "x" && str.Substring(str.Length - 1, 1) == "x")
+            {
+                return str.Substring(1, str.Length - 2);
+            }
+            else if (str.Substring(0, 1) == "x")
+            {
+                return str.Substring(1, str.Length - 1);
+            }
+            else if (str.Substring(str.Length - 1, 1) == "x")
+            {
+                //with Hxix it returns Hxi like it's supposed to but it does not show correct
+                return str.Substring(0, str.Length - 1);
+            }
+            else
+            {
+                return str;
+            }
             throw new NotImplementedException();
         }
     }

@@ -97,7 +97,7 @@ namespace Warmups.BLL
         public string StringSplosion(string str)
         {
             string FinalString = "";
-            for (int i = 0; i < str.Length + 1; i++)
+            for (int i = 1; i < str.Length; i++)
             {
                 FinalString += str.Substring(0, i);
             }
