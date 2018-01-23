@@ -197,22 +197,6 @@ namespace Warmups.BLL
             throw new NotImplementedException();
         }
 
-        public string StringX(string str)
-        {
-            string FinalString = "";
-            for (int i = 1; i < str.Length - 1; i++)
-            {
-                if (str.Substring(i, 1) != "x")
-                {
-                    FinalString += str.Substring(i, 1);
-                }
-            }
-            FinalString = str.Substring(0, 1) + FinalString;
-            FinalString = FinalString + str.Substring(str.Length - 1, 1);
-            return FinalString;
-            throw new NotImplementedException();
-        }
-
         public string AltPairs(string str)
         {
             return str.Substring(0,2) + str.Substring(4,2) + str.Substring(8,2);
