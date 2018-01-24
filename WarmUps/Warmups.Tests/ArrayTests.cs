@@ -110,7 +110,7 @@ namespace Warmups.Tests
         }
 
         [TestCase(new[] { 2, 2, 3 }, true)]
-        [TestCase(new[] { 3, 4, 5, 3 }, true)]
+        [TestCase(new[] { 3, 4, 5, 3 }, false)]
         [TestCase(new[] { 2, 3, 2, 2 }, false)]
         public void Double23Test(int[] nums, bool expected)
         {

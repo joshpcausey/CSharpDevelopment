@@ -176,7 +176,7 @@ namespace Warmups.BLL
             }
             else if (a == "")
             {
-                return "@" + b.Substring(0, b.Length - 1);
+                return "@" + b.Substring(0, b.Length);
             }
             else if (b == "")
             {

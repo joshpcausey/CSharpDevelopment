@@ -82,7 +82,7 @@ namespace Warmups.BLL
             return IsDouble;
             throw new NotImplementedException();
         }
-        //COME BACK TO HERE JOSHUA CAUSEY JOSH
+
         public string EveryOther(string str)
         {
             string FinalString = "";
@@ -97,7 +97,7 @@ namespace Warmups.BLL
         public string StringSplosion(string str)
         {
             string FinalString = "";
-            for (int i = 1; i < str.Length; i++)
+            for (int i = 1; i < str.Length + 1; i++)
             {
                 FinalString += str.Substring(0, i);
             }
@@ -163,10 +163,9 @@ namespace Warmups.BLL
             }
             throw new NotImplementedException();
         }
-        //returns true but does not say it's correct. ask about this one
         public bool Array123(int[] numbers)
         {
-            for (int i = 0; i < numbers.Length - 3; i++)
+            for (int i = 0; i <= numbers.Length - 3; i++)
             {
                 if (numbers[i] == 1)
                 {
@@ -182,39 +181,102 @@ namespace Warmups.BLL
             return false;
             throw new NotImplementedException();
         }
-        //could not get abc to to work. not done
+
         public int SubStringMatch(string a, string b)
         {
             int NumberOfMatches = 0;
-            for (int i = 0; i < a.Length - 2; i++)
             {
-                if (a.Substring(i, 2) == b.Substring(i, 2))
+                if (a.Length <= b.Length)
                 {
-                    NumberOfMatches += 1;
+                    for (int i = 0; i < a.Length - 1; i++)
+                        if (a.Substring(i, 2) == b.Substring(i, 2))
+                        {
+                            NumberOfMatches += 1;
+                        }
+                }
+                else
+                {
+                    for (int i = 0; i < b.Length - 1; i++)
+                        if (b.Substring(i, 2) == a.Substring(i, 2))
+                        {
+                            NumberOfMatches += 1;
+                        }
                 }
             }
             return NumberOfMatches;
             throw new NotImplementedException();
         }
 
-        public string AltPairs(string str)
+        public string StringX(string str)
         {
-            return str.Substring(0,2) + str.Substring(4,2) + str.Substring(8,2);
+            string FinalString = "";
+            for (int i = 1; i < str.Length - 1; i++)
+            {
+                if (str.Substring(i, 1) != "x")
+                {
+                    FinalString += str.Substring(i, 1);
+                }
+            }
+            FinalString = str.Substring(0, 1) + FinalString;
+            FinalString = FinalString + str.Substring(str.Length - 1, 1);
+            return FinalString;
             throw new NotImplementedException();
         }
-        //come back to here
+
+        public string AltPairs(string str)
+        {
+            if (str.Length < 7)
+            {
+                return str.Substring(0, 2) + str.Substring(4, 2);
+            }
+            else if (str.Length == 9)
+            {
+                return str.Substring(0, 2) + str.Substring(4, 2) + str.Substring(8, 1);
+            }
+            else
+            {
+                return str.Substring(0, 2) + str.Substring(4, 2) + str.Substring(8, 2);
+            }
+            throw new NotImplementedException();
+        }
+
         public string DoNotYak(string str)
         {
+            if (str.Contains("yak"))
+            {
+                return str.Replace("yak", "");
+            }
+            else
+            {
+                return str;
+            }
             throw new NotImplementedException();
         }
 
         public int Array667(int[] numbers)
         {
+            int NumberOfTimes = 0;
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                if (numbers[i] == 6 && numbers[i + 1] == 6 || numbers[i + 1] == 7)
+                {
+                    NumberOfTimes += 1;
+                }
+            }
+            return NumberOfTimes;
             throw new NotImplementedException();
         }
 
         public bool NoTriples(int[] numbers)
         {
+            for (int i = 0; i < numbers.Length - 3; i++)
+            {
+                if (numbers[i] == numbers[i + 1] && numbers[i + 1] == numbers[i + 2])
+                {
+                    return false;
+                }
+            }
+            return true;
             throw new NotImplementedException();
         }
 
