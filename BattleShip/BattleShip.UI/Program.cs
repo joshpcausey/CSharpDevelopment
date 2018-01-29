@@ -39,14 +39,14 @@ namespace BattleShip.UI
                 BLL.Responses.ShotStatus value1 = (GameWorkflow.FireShotAtEnemey(p2));
                 if (value1 == BLL.Responses.ShotStatus.Victory)
                 {
-                    Console.WriteLine("Game over " + p1.Name + " wins");
+                    Console.WriteLine("Game over " + p1.Name + " wins.. ROLLTIDE");
                     GameOver = true;
                 }
                 GameWorkflow.PrintEnemyBoard(p1);
                 BLL.Responses.ShotStatus value2 = (GameWorkflow.FireShotAtEnemey(p1));
                 if (value2 == BLL.Responses.ShotStatus.Victory)
                 {
-                    Console.WriteLine("Game over " + p1.Name + " wins");
+                    Console.WriteLine("Game over " + p1.Name + " wins.. ROLLTIDE");
                     GameOver = true;
                 }
             }
