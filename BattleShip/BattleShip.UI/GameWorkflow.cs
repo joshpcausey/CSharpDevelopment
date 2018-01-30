@@ -55,6 +55,7 @@ namespace BattleShip.UI
         {
             Coordinate coordToShoot = ConsoleInput.GetCoordinateFromUser();
             ShotStatus returnvValue = player.board.FireShot(coordToShoot).ShotStatus;
+            //use return returnValue istead of if else
             if(returnvValue == ShotStatus.Hit)
             {
                 Console.WriteLine(ShotStatus.Hit);
