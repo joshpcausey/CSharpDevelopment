@@ -22,7 +22,7 @@ namespace LINQ
             Exercise6();
             Exercise7();
             Exercise8();
-            Exercise9();
+            Exercise9(); 
             Exercise10();
             Exercise11();
             Exercise12();
