@@ -556,15 +556,15 @@ namespace LINQ
         static void Exercise29()
         {
             var allProducts = DataLoader.LoadProducts();
-            var result = from product in allProducts
+            var Catresult = from product in allProducts
                          orderby product.Category, product.UnitsInStock
                          group product by product.Category;
-            foreach (var group in result)
+            foreach (var group in Catresult)
             {
                 Console.WriteLine(group.Key);
                 foreach (var prod in group.OrderByDescending(p => p.UnitsInStock))
                 {
-                    Console.WriteLine("\t{0}, {1}", prod.ProductName, prod.UnitsInStock);
+                    Console.WriteLine("{0}, {1}", prod.ProductName, prod.UnitsInStock);
                 }
                 Console.WriteLine();
             }
