@@ -43,7 +43,7 @@ namespace LINQ
             //Exercise28();
             //Exercise29();
             //Exercise30();
-            //Exercise31();
+            Exercise31();
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -564,7 +564,7 @@ namespace LINQ
                 Console.WriteLine(group.Key);
                 foreach (var prod in group.OrderByDescending(p => p.UnitsInStock))
                 {
-                    Console.WriteLine("{0}, {1}", prod.ProductName, prod.UnitsInStock);
+                    Console.WriteLine("{0} {1}", prod.ProductName, prod.UnitsInStock);
                 }
                 Console.WriteLine();
             }
@@ -606,7 +606,7 @@ namespace LINQ
             var orderdlist = filteredlist.OrderByDescending(g => g.average).Take(3);
             foreach(var cat in orderdlist)
             {
-                Console.WriteLine(cat.cat + " " + cat.average);
+                Console.WriteLine(cat.cat + " " + cat.average.ToString($"c"));
             }
         }
     }
