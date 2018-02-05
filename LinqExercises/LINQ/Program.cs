@@ -14,36 +14,36 @@ namespace LINQ
 
             //PrintAllCustomers();
 
-            Exercise1();
-            Exercise2();
-            Exercise3();
-            Exercise4();
-            Exercise5();
-            Exercise6();
-            Exercise7();
-            Exercise8();
-            Exercise9(); 
-            Exercise10();
-            Exercise11();
-            Exercise12();
-            Exercise13();
-            Exercise14();
-            Exercise15();
-            Exercise16();
-            Exercise17();
-            Exercise18();
-            Exercise19();
-            Exercise20();
-            Exercise22();
-            Exercise23();
-            Exercise24();
-            Exercise25();
-            Exercise26();
-            Exercise27();
-            Exercise28();
-            Exercise29();
-            Exercise30();
-            Exercise31();
+            //Exercise1();
+            //Exercise2();
+            //Exercise3();
+            //Exercise4();
+            //Exercise5();
+            //Exercise6();
+            //Exercise7();
+            //Exercise8();
+            //Exercise9(); 
+            //Exercise10();
+            //Exercise11();
+            //Exercise12();
+            //Exercise13();
+            //Exercise14();
+            //Exercise15();
+            //Exercise16();
+            //Exercise17();
+            //Exercise18();
+            //Exercise19();
+            //Exercise20();
+            //Exercise22();
+            //Exercise23();
+            //Exercise24();
+            //Exercise25();
+            //Exercise26();
+            //Exercise27();
+            //Exercise28();
+            //Exercise29();
+            //Exercise30();
+            //Exercise31();
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -552,19 +552,21 @@ namespace LINQ
         /// <summary>
         /// Print a distinct list of product categories and the total units in stock
         /// </summary>
+        /// need help
         static void Exercise29()
         {
             var allProducts = DataLoader.LoadProducts();
-            var allProdCats = allProducts.GroupBy(p => p.Category);
-            var allProdAndUnitCount = allProdCats.Select(p => new
+            var result = from product in allProducts
+                         orderby product.Category, product.UnitsInStock
+                         group product by product.Category;
+            foreach (var group in result)
             {
-                pCat = p.Key,
-                pUnitCount = p.Count()
-            });
-            ;
-            foreach(var cat in allProdAndUnitCount)
-            {
-                Console.WriteLine(cat.pCat + " " + cat.pUnitCount);
+                Console.WriteLine(group.Key);
+                foreach (var prod in group.OrderByDescending(p => p.UnitsInStock))
+                {
+                    Console.WriteLine("\t{0}, {1}", prod.ProductName, prod.UnitsInStock);
+                }
+                Console.WriteLine();
             }
         }
 
