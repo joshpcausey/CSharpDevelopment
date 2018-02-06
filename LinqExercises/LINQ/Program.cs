@@ -15,7 +15,7 @@ namespace LINQ
             //PrintAllCustomers();
 
             //Exercise1();
-            //Exercise2();
+            Exercise2();
             //Exercise3();
             //Exercise4();
             //Exercise5();
@@ -129,7 +129,7 @@ namespace LINQ
         static void Exercise2()
         {
             var allProducts = DataLoader.LoadProducts();
-            var filtered = allProducts.Where(p => p.UnitPrice > 3.00M);
+            var filtered = allProducts.Where(p => p.UnitPrice > 3.00M && p.UnitsInStock > 0);
             PrintProductInformation(filtered);
         }
 
@@ -367,17 +367,11 @@ namespace LINQ
         static void Exercise18()
         {
             var allProducts = DataLoader.LoadProducts();
-            var orderByCat = allProducts.OrderBy(p => p.Category);
-            var orderByPrice = allProducts.OrderByDescending(p => p.UnitPrice);
-            foreach (var prod in orderByCat)
-            {
-                Console.WriteLine(prod.ProductName + " " + prod.Category);
+            var newOrder = allProducts.OrderBy(p => p.Category)
+                .ThenByDescending(n => n.UnitPrice);
 
-            }
-            foreach (var prod in orderByPrice)
-            {
-                Console.WriteLine(prod.ProductName + " " + prod.UnitPrice);
-            }
+            PrintProductInformation(newOrder);
+
         }
 
         /// <summary>
@@ -504,14 +498,10 @@ namespace LINQ
         /// </summary>
         static void Exercise26()
         {
-            var allNumbers = DataLoader.NumbersA;
-            var count = 0;
-            var evenNums = allNumbers.Where(num => num % 2 != 0);
-            foreach (var num in evenNums)
-            {
-                count += 1;
-            }
-            Console.WriteLine(count);
+            var numbers = DataLoader.NumbersA;
+            var num = numbers.Where(n => n % 2 == 1).ToList();
+
+            Console.WriteLine(num.Count);
         }
 
         /// <summary>
@@ -556,18 +546,18 @@ namespace LINQ
         static void Exercise29()
         {
             var allProducts = DataLoader.LoadProducts();
-            var Catresult = from product in allProducts
-                         orderby product.Category, product.UnitsInStock
-                         group product by product.Category;
-            foreach (var group in Catresult)
-            {
-                Console.WriteLine(group.Key);
-                foreach (var prod in group.OrderByDescending(p => p.UnitsInStock))
+            var categories = allProducts.GroupBy(p => p.Category)
+                .Select(c => new
                 {
-                    Console.WriteLine("{0} {1}", prod.ProductName, prod.UnitsInStock);
-                }
-                Console.WriteLine();
+                    c.Key,
+                    Value = c.Sum(s => s.UnitsInStock)
+                });
+
+            foreach (var cat in categories)
+            {
+                Console.WriteLine($"{cat.Key} {cat.Value}");
             }
+
         }
 
         /// <summary>
