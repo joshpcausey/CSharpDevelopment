@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SGBank.Models.Interfaces
 {
-    public interface IAccountRepository
-    {
-        Account LoadAccount(string AccountNumber);
-        void SaveAccount(Account account);
-    }
+	public interface IAccountRepository
+	{
+		Account LoadAccount(string AccountNumber);
+		void SaveAccount(Account account);
+	}
 }

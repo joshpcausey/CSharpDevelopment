@@ -8,32 +8,32 @@ using System.Threading.Tasks;
 
 namespace SGBank.UI.Workflows
 {
-    public class AccountLookupWorkflow
-    {
-        public void Execute()
-        {
-            AccountManager manager = AccountManagerFactory.Create();
+	public class AccountLookupWorkflow
+	{
+		public void Execute()
+		{
+			AccountManager manager = AccountManagerFactory.Create();
 
-            Console.Clear();
-            Console.WriteLine("Lookup an account");
-            Console.WriteLine("--------------------------");
-            Console.Write("Enter an account number: ");
-            string accountNumber = Console.ReadLine();
+			Console.Clear();
+			Console.WriteLine("Lookup an account");
+			Console.WriteLine("--------------------------");
+			Console.Write("Enter an account number: ");
+			string accountNumber = Console.ReadLine();
 
-            AccountLookupResponse response = manager.LookupAccount(accountNumber);
+			AccountLookupResponse response = manager.LookupAccount(accountNumber);
 
-            if(response.Success)
-            {
-                ConsoleIO.DisplayAccountDetails(response.Account);
-            }
-            else
-            {
-                Console.WriteLine("An error occurred: ");
-                Console.WriteLine(response.Message);
-            }
+			if (response.Success)
+			{
+				ConsoleIO.DisplayAccountDetails(response.Account);
+			}
+			else
+			{
+				Console.WriteLine("An error occurred: ");
+				Console.WriteLine(response.Message);
+			}
 
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-        }
-    }
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadKey();
+		}
+	}
 }

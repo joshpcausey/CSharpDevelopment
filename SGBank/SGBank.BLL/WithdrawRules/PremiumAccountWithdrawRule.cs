@@ -29,7 +29,7 @@ namespace SGBank.BLL.WithdrawRules
 
 			response.OldBalance = account.Balance;
 			account.Balance += amount;
-			if (account.Balance < 500)
+			if (account.Balance < -500)
 			{
 				account.Balance += -10;
 			}

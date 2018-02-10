@@ -11,26 +11,26 @@ using System.Threading.Tasks;
 
 namespace SGBank.Tests
 {
-    [TestFixture]
-    public class FreeAccountTests
-    {
-        [Test]
-        public void CanLoadFreeAccountTestData()
-        {
-            AccountManager manager = AccountManagerFactory.Create();
+	[TestFixture]
+	public class FreeAccountTests
+	{
+		[Test]
+		public void CanLoadFreeAccountTestData()
+		{
+			AccountManager manager = AccountManagerFactory.Create();
 
-            AccountLookupResponse response = manager.LookupAccount("12345");
+			AccountLookupResponse response = manager.LookupAccount("12345");
 
-            Assert.IsNotNull(response.Account);
-            Assert.IsTrue(response.Success);
-            Assert.AreEqual("12345", response.Account.AccountNumber);
-        }
+			Assert.IsNotNull(response.Account);
+			Assert.IsTrue(response.Success);
+			Assert.AreEqual("12345", response.Account.AccountNumber);
+		}
 
 		[TestCase("12345", "Free Account", 100, AccountType.Free, 250, false)]
 		[TestCase("12345", "Free Account", 100, AccountType.Free, -100, false)]
 		[TestCase("12345", "Free Account", 100, AccountType.Basic, 50, false)]
 		[TestCase("12345", "Free Account", 100, AccountType.Free, 50, true)]
-		public void FreeAccountDepositRuleTest(string accountNumber, string name, decimal balance, AccountType accountType, 
+		public void FreeAccountDepositRuleTest(string accountNumber, string name, decimal balance, AccountType accountType,
 			decimal amount, bool expectedResult)
 		{
 			Account account = new Account();

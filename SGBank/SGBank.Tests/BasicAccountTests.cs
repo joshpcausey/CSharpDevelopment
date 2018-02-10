@@ -33,11 +33,11 @@ namespace SGBank.Tests
 			Assert.AreEqual(expectedResult, response.Success);
 		}
 
-		[TestCase("33333", "Basic Account", 1500, AccountType.Basic, -1000, 1500, false)]
-		[TestCase("33333", "Basic Account", 100, AccountType.Free, -100, 100, false)]
-		[TestCase("33333", "Basic Account", 100, AccountType.Basic, 100, 100, false)]
-		[TestCase("33333", "Basic Account", 150, AccountType.Basic, -50, 100, true)]
-		[TestCase("33333", "Basic Account", 100, AccountType.Basic, -150, -60, true)]
+		[TestCase("3333", "Basic Account", 1500, AccountType.Basic, -1000, 1500, false)]
+		[TestCase("3333", "Basic Account", 100, AccountType.Free, -100, 100, false)]
+		[TestCase("3333", "Basic Account", 100, AccountType.Basic, 100, 100, false)]
+		[TestCase("3333", "Basic Account", 150, AccountType.Basic, -50, 100, true)]
+		[TestCase("3333", "Basic Account", 100, AccountType.Basic, -150, -60, true)]
 		public void BasicAccountWithdrawRuleTest(string accountNumber, string name, decimal balance, AccountType accountType,
 			decimal amount, decimal newBalence, bool expectedResult)
 		{

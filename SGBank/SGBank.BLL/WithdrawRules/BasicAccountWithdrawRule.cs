@@ -14,25 +14,25 @@ namespace SGBank.BLL.WithdrawRules
 		public AccountWithdrawResponse Withdraw(Account account, decimal amount)
 		{
 			AccountWithdrawResponse response = new AccountWithdrawResponse();
-			if(account.Type != AccountType.Basic)
+			if (account.Type != AccountType.Basic)
 			{
 				response.Success = false;
 				response.Message = "Error: a non-basic account hit the Basic Withdraw Rule. Contact IT";
 				return response;
 			}
-			else if(amount >= 0)
+			else if (amount >= 0)
 			{
 				response.Success = false;
 				response.Message = "Withdrawal amounts must be negative!";
 				return response;
 			}
-			else if(amount < -500)
+			else if (amount < -500)
 			{
 				response.Success = false;
 				response.Message = "Basic accounts cannot withdraw more than $500!";
 				return response;
 			}
-			else if(account.Balance + amount < -100)
+			else if (account.Balance + amount < -100)
 			{
 				response.Success = false;
 				response.Message = "This amount will overdraft more than your $100 limit!";
@@ -41,7 +41,7 @@ namespace SGBank.BLL.WithdrawRules
 
 			response.OldBalance = account.Balance;
 			account.Balance += amount;
-			if(account.Balance < 0)
+			if (account.Balance < 0)
 			{
 				account.Balance += -10;
 			}

@@ -15,13 +15,13 @@ namespace SGBank.BLL.DepositRules
 
 		public AccountDepositResponse Deposit(Account account, decimal amount)
 		{
-			if(account.Type != AccountType.Basic && account.Type != AccountType.Premium)
+			if (account.Type != AccountType.Basic && account.Type != AccountType.Premium)
 			{
 				response.Success = false;
 				response.Message = "Error: Only basic and premium accounts can deposit with no limit. Contact IT";
 				return response;
 			}
-			else if(amount <= 0)
+			else if (amount <= 0)
 			{
 				response.Success = false;
 				response.Message = "Deposit amounts must be positive!";

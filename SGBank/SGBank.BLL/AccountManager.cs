@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace SGBank.BLL
 {
-    public class AccountManager
-    {
+	public class AccountManager
+	{
 		public AccountWithdrawResponse Withdraw(string accountNumber, decimal amount)
 		{
 			AccountWithdrawResponse response = new AccountWithdrawResponse();
 			response.Account = _accountRepository.LoadAccount(accountNumber);
-			if(response.Account == null)
+			if (response.Account == null)
 			{
 				response.Success = false;
 				response.Message = "That the account number is not valid.";
@@ -39,58 +39,58 @@ namespace SGBank.BLL
 
 		}
 
-        private IAccountRepository _accountRepository;
+		private IAccountRepository _accountRepository;
 
-        public AccountManager(IAccountRepository accountRepository)
-        {
-            _accountRepository = accountRepository;
-        }
+		public AccountManager(IAccountRepository accountRepository)
+		{
+			_accountRepository = accountRepository;
+		}
 
-        public AccountLookupResponse LookupAccount(string accountNumber)
-        {
-            AccountLookupResponse response = new AccountLookupResponse();
+		public AccountLookupResponse LookupAccount(string accountNumber)
+		{
+			AccountLookupResponse response = new AccountLookupResponse();
 
-            response.Account = _accountRepository.LoadAccount(accountNumber);
+			response.Account = _accountRepository.LoadAccount(accountNumber);
 
-            if(response.Account == null)
-            {
-                response.Success = false;
-                response.Message = $"{accountNumber} is not a valid account.";
-            }
-            else
-            {
-                response.Success = true;
-            }
+			if (response.Account == null)
+			{
+				response.Success = false;
+				response.Message = $"{accountNumber} is not a valid account.";
+			}
+			else
+			{
+				response.Success = true;
+			}
 
-            return response;
-        }
+			return response;
+		}
 
-        public AccountDepositResponse Deposit(string accountNumber, decimal amount)
-        {
-            AccountDepositResponse response = new AccountDepositResponse();
+		public AccountDepositResponse Deposit(string accountNumber, decimal amount)
+		{
+			AccountDepositResponse response = new AccountDepositResponse();
 
-            response.Account = _accountRepository.LoadAccount(accountNumber);
+			response.Account = _accountRepository.LoadAccount(accountNumber);
 
-            if (response.Account == null)
-            {
-                response.Success = false;
-                response.Message = $"{accountNumber} is not a valid account.";
-                return response;
-            }
-            else
-            {
-                response.Success = true;
-            }
+			if (response.Account == null)
+			{
+				response.Success = false;
+				response.Message = $"{accountNumber} is not a valid account.";
+				return response;
+			}
+			else
+			{
+				response.Success = true;
+			}
 
-            IDeposit depositRule = DepositRulesFactory.Create(response.Account.Type);
-            response = depositRule.Deposit(response.Account, amount);
+			IDeposit depositRule = DepositRulesFactory.Create(response.Account.Type);
+			response = depositRule.Deposit(response.Account, amount);
 
-            if(response.Success)
-            {
-                _accountRepository.SaveAccount(response.Account);
-            }
+			if (response.Success)
+			{
+				_accountRepository.SaveAccount(response.Account);
+			}
 
-            return response;
-        }
-    }
+			return response;
+		}
+	}
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SGBank.Models.Interfaces
 {
-    public interface IDeposit
-    {
-        AccountDepositResponse Deposit(Account account, decimal amount);
-    }
+	public interface IDeposit
+	{
+		AccountDepositResponse Deposit(Account account, decimal amount);
+	}
 }

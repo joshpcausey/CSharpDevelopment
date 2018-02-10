@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SGBank.Models.Responses
 {
-    public class AccountLookupResponse : Response
-    {
-        public Account Account { get; set; }
-    }
+	public class AccountLookupResponse : Response
+	{
+		public Account Account { get; set; }
+	}
 }

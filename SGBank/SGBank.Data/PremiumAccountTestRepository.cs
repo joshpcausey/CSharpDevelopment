@@ -15,7 +15,7 @@ namespace SGBank.Data
 			Name = "Premium",
 			Balance = 100.00M,
 			AccountNumber = "4444",
-			Type = AccountType.Basic
+			Type = AccountType.Premium
 		};
 
 		public Account LoadAccount(string AccountNumber)

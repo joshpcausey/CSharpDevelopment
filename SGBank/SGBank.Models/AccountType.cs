@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SGBank.Models
 {
-    public enum AccountType
-    {
-        Free=1,
-        Basic,
-        Premium
-    }
+	public enum AccountType
+	{
+		Free = 1,
+		Basic,
+		Premium
+	}
 }
