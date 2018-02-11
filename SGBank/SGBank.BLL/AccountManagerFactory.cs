@@ -18,11 +18,12 @@ namespace SGBank.BLL
 			{
 				case "FreeTest":
 					return new AccountManager(new FreeAccountTestRepository());
-				default:
 				case "BasicTest":
 					return new AccountManager(new BasicAccountTestRepository());
 				case "PremiumTest":
 					return new AccountManager(new PremiumAccountTestRepository());
+				default:
+					return new AccountManager(new FileAccountTestRepository());
 			}
 		}
 	}
