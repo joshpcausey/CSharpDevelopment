@@ -37,7 +37,7 @@ namespace SGBank.Tests
 		[TestCase("4444", "Premium Account", 1500, AccountType.Premium, -1000, 500, true)]
 		[TestCase("4444", "Premium Account", 100, AccountType.Basic, -100, 100, false)]
 		[TestCase("4444", "Premium Account", 100, AccountType.Premium, 100, 100, false)]
-		[TestCase("4444", "Premium Account", 100, AccountType.Premium, -101, -11, true)]
+		[TestCase("4444", "Premium Account", 100, AccountType.Premium, -101, -1, true)]
 		public void PremiumAccountWithdrawRuleTest(string accountNumber, string name, decimal balance, AccountType accountType,
 			decimal amount, decimal newBalence, bool expectedResult)
 		{
