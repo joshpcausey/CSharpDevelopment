@@ -71,12 +71,13 @@ namespace SGBank.Data
 				string[] columns = row.Split(',');
 				if (columns[0] == account.AccountNumber)
 				{
-
+					string[] arrLine = File.ReadAllLines(path);
+					arrLine[lineToEdit] = $"{account.AccountNumber},{account.Name},{account.Balance},{accountTypeToWrite}";
+					File.WriteAllLines(path, arrLine);
+					break;
 				}
 				lineToEdit += 1;
-				string[] arrLine = File.ReadAllLines(path);
-				arrLine[lineToEdit - 1] = $"{account.AccountNumber},{account.Name},{account.Balance},{accountTypeToWrite}";
-				File.WriteAllLines(path, arrLine);
+				
 			}
 		}
 	}
