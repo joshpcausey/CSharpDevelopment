@@ -137,10 +137,50 @@ namespace SGFlooring.BLL
 			return response;
 		}
 
+		public FindOrderResponse FindOrder(string date, string orderNumber)
+		{
+			FindOrderResponse response = new FindOrderResponse();
+			DateTime dateParsed;
+			int orderNumberParsed = int.MinValue;
+
+			if (!DateTime.TryParse(date, out dateParsed))
+			{
+				response.Message = $"Not a valid date. Must be in mm/dd/yyyy format. You typed {date}";
+				response.Success = false;
+				return response;
+			}
+
+			else if(!int.TryParse(orderNumber, out orderNumberParsed))
+			{
+				response.Message = $"Not a valid number. You typed {orderNumber}";
+				response.Success = false;
+				return response;
+			}
+
+			List<Order> allOrdersThatMatch = new List<Order>();
+
+			allOrdersThatMatch = _orderRepository.FindOrder(date, orderNumberParsed);
+			if(allOrdersThatMatch.Count() < 1)
+			{
+				response.Success = false;
+				response.Message = "Could not find that order";
+				return response;
+			}
+
+			Order originalOrder = allOrdersThatMatch[0];
+			Order copyOrder = new Order(originalOrder);
+
+			response.OriginalOrder = originalOrder;
+			response.CopyOrder = copyOrder;
+			response.Success = true;
+			response.Message = "Found Order";
+			return response;
+		}
+
 		public LoadOrderResponse LoadOrder(string date)
 		{
 			LoadOrderResponse response = new LoadOrderResponse();
-			if (DateTime.Parse(date) <= DateTime.Today || date == "")
+			if (date == "" || DateTime.Parse(date) <= DateTime.Today)
 			{
 				response.Success = false;
 				response.Message = "Date must be in the correct format (mm/dd/yyyy) and must be after today.";
@@ -177,5 +217,4 @@ namespace SGFlooring.BLL
 			return response;
 		}
 	}
-
 }

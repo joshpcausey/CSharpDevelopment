@@ -15,7 +15,7 @@ namespace SGFlooring.UI.Workflows
 			Console.Clear();
 			OrderManager orderManager = OrderManagerFactory.Create();
 
-
+			
 			Console.WriteLine("Enter a date: ");
 			string date = Console.ReadLine();
 			

@@ -17,6 +17,7 @@ namespace SGFlooring.UI
 				Console.WriteLine("Make a Selection");
 				Console.WriteLine("1. Display Orders");
 				Console.WriteLine("2. Add an Order");
+				Console.WriteLine("3. Edit an Order");
 
 				string userInput = Console.ReadLine();
 
@@ -27,6 +28,9 @@ namespace SGFlooring.UI
 						break;
 					case "2":
 						AddOrderWorkflow.Execute();
+						break;
+					case "3":
+						EditOrderWorkflow.Execute();
 						break;
 				}
 			}

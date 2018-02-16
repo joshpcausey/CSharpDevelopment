@@ -8,6 +8,25 @@ namespace SGFlooring.Models
 {
 	public class Order
 	{
+		public Order() { }
+
+		public Order(Order that)
+		{
+			OrderDate = that.OrderDate;
+			OrderNumber = that.OrderNumber;
+			CustomerName = that.CustomerName;
+			State = that.State;
+			TaxRate = that.TaxRate;
+			ProductType = that.ProductType;
+			Area = that.Area;
+			CostPerSquareFoot = that.CostPerSquareFoot;
+			LaborCostPerSquareFoot = that.LaborCostPerSquareFoot;
+			MaterialCost = that.MaterialCost;
+			LaborCost = that.LaborCost;
+			Tax = that.Tax;
+			Total = that.Total;
+		}
+
 		public string OrderDate { get; set; }
 		public int OrderNumber { get; set; }
 		public string CustomerName { get; set; }
