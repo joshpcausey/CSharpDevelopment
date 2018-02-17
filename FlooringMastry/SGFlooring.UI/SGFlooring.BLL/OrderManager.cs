@@ -216,5 +216,10 @@ namespace SGFlooring.BLL
 			response.Message = "Displayed Orders";
 			return response;
 		}
+
+		public void OverRideOrder(Order order)
+		{
+			_orderRepository.OverRideOrder(order);
+		}
 	}
 }

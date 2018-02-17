@@ -154,6 +154,30 @@ namespace SGFlooring.UI.Workflows
 			Console.WriteLine(responseFind.CopyOrder.Tax);
 			Console.WriteLine(responseFind.CopyOrder.Total);
 			Console.WriteLine();
+
+
+			bool overRide = false;		
+			do
+			{
+				Console.WriteLine("Are you sure you want to override? Type 'y' for yes or 'n' for no");
+				string userInputOverride = Console.ReadLine();
+				if (userInputOverride == "y")
+				{
+					overRide = true;
+					break;
+				}
+				else if (userInputOverride == "n")
+				{
+					break;
+				}
+			} while (true);
+
+			if (!overRide)
+			{
+				return;
+			}
+
+			orderManager.OverRideOrder(responseFind.CopyOrder);
 		}
 	}
 }

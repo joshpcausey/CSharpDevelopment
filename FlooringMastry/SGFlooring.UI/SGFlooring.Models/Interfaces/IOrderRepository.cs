@@ -13,5 +13,6 @@ namespace SGFlooring.Models.Interfaces
 		void SaveOrder(Order order);
 		List<Order> EditOrder(string customerName, string state, string productType, int area);
 		List<Order> FindOrder(string date, int orderNumber);
+		void OverRideOrder(Order order);
 	}
 }

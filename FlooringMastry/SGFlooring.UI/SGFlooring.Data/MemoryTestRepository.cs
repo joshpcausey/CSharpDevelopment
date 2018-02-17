@@ -35,6 +35,28 @@ namespace SGFlooring.Data
 			return returnOrders;
 		}
 
+		public void OverRideOrder(Order order)
+		{
+			foreach(var o in AllOrders)
+			{
+				if(o.OrderNumber == order.OrderNumber && o.OrderDate == order.OrderDate)
+				{
+					o.CustomerName = order.CustomerName;
+					o.State = order.State;
+					o.TaxRate = order.TaxRate;
+					o.ProductType = order.ProductType;
+					o.Area = order.Area;
+					o.CostPerSquareFoot = order.CostPerSquareFoot;
+					o.LaborCostPerSquareFoot = order.LaborCostPerSquareFoot;
+					o.MaterialCost = order.MaterialCost;
+					o.LaborCost = order.LaborCost;
+					o.Tax = order.Tax;
+					o.Total = order.Total;
+					return;
+				}
+			}
+		}
+
 		public void SaveOrder(Order order)
 		{
 			AllOrders.Add(order);

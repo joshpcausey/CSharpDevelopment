@@ -32,6 +32,9 @@ namespace SGFlooring.UI
 					case "3":
 						EditOrderWorkflow.Execute();
 						break;
+					case "4":
+						RemoveOrderWorkflow.Execute():
+						break;
 				}
 			}
 		}
