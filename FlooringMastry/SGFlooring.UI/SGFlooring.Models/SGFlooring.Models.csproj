@@ -49,6 +49,7 @@
     <Compile Include="Responses\EditOrderResponse.cs" />
     <Compile Include="Responses\FindOrderResponse.cs" />
     <Compile Include="Responses\LoadOrderResponse.cs" />
+    <Compile Include="Responses\RemoveOrderResponse.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

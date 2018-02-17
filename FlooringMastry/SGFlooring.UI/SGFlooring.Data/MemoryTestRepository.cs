@@ -57,6 +57,11 @@ namespace SGFlooring.Data
 			}
 		}
 
+		public void RemoveOrder(Order order)
+		{
+			AllOrders.RemoveAll(o => o.OrderNumber == order.OrderNumber && o.OrderDate == order.OrderDate);
+		}
+
 		public void SaveOrder(Order order)
 		{
 			AllOrders.Add(order);

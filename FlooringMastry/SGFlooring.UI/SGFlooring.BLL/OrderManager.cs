@@ -221,5 +221,10 @@ namespace SGFlooring.BLL
 		{
 			_orderRepository.OverRideOrder(order);
 		}
+
+		public void RemoveOrder(Order order)
+		{
+			_orderRepository.RemoveOrder(order);
+		}
 	}
 }

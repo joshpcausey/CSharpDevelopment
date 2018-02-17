@@ -18,6 +18,7 @@ namespace SGFlooring.UI
 				Console.WriteLine("1. Display Orders");
 				Console.WriteLine("2. Add an Order");
 				Console.WriteLine("3. Edit an Order");
+				Console.WriteLine("4. Remove an Order");
 
 				string userInput = Console.ReadLine();
 
@@ -33,7 +34,7 @@ namespace SGFlooring.UI
 						EditOrderWorkflow.Execute();
 						break;
 					case "4":
-						RemoveOrderWorkflow.Execute():
+						RemoveOrderWorkflow.Execute();
 						break;
 				}
 			}
