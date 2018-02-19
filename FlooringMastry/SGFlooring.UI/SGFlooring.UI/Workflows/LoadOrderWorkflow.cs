@@ -18,8 +18,14 @@ namespace SGFlooring.UI.Workflows
 			
 			Console.WriteLine("Enter a date: ");
 			string date = Console.ReadLine();
-			
 			LoadOrderResponse response = orderManager.LoadOrder(date);
+			if(response.Success == false)
+			{
+				Console.WriteLine(response.Message);
+				Console.WriteLine("Press any key to continue...");
+				Console.ReadKey();
+				return;
+			}
 		}
 	}
 }

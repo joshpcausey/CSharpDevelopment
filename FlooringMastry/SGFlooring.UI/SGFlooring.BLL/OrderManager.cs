@@ -180,10 +180,11 @@ namespace SGFlooring.BLL
 		public LoadOrderResponse LoadOrder(string date)
 		{
 			LoadOrderResponse response = new LoadOrderResponse();
-			if (date == "" || DateTime.Parse(date) <= DateTime.Today)
+			DateTime dateParsed;
+			if (!DateTime.TryParse(date, out dateParsed))
 			{
+				response.Message = $"Not a valid date. Must be in mm/dd/yyyy format. You typed {date}";
 				response.Success = false;
-				response.Message = "Date must be in the correct format (mm/dd/yyyy) and must be after today.";
 				return response;
 			}
 

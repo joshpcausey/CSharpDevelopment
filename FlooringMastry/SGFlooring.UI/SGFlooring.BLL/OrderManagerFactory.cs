@@ -18,8 +18,9 @@ namespace SGFlooring.BLL
 			{
 				case "Memory":
 					return new OrderManager(new MemoryTestRepository());
+				default:
+					return new OrderManager(new FileTestRepository());
 			}
-			throw new NotImplementedException();
 		}
 	}
 }
