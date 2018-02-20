@@ -16,20 +16,15 @@ namespace SGFlooring.UI.Workflows
 			Console.Clear();
 			OrderManager orderManager = OrderManagerFactory.Create();
 
-			Console.Write("Enter an Order Date: ");
-			string date = Console.ReadLine();
+			string date = ConsoleIO.GetDate();
 
-			Console.Write("Enter a Customer Name: ");
-			string name = Console.ReadLine();
+			string name = ConsoleIO.GetName();
 
-			Console.Write("Enter a State: ");
-			string state = Console.ReadLine();
+			string state = ConsoleIO.GetState();
 
-			Console.Write("Enter a Product Type: ");
-			string productType = Console.ReadLine();
+			string productType = ConsoleIO.GetProductType();
 
-			Console.Write("Enter an Area: ");
-			decimal area = decimal.Parse(Console.ReadLine());
+			string area = ConsoleIO.GetArea();
 
 			AddOrderResponse response = orderManager.AddOrder(date, name, state, productType, area);
 

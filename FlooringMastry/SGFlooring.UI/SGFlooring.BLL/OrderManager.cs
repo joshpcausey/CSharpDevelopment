@@ -19,8 +19,9 @@ namespace SGFlooring.BLL
 			_orderRepository = orderRepository;
 		}
 
-		public AddOrderResponse AddOrder(string date, string name, string state, string productType, decimal area)
+		public AddOrderResponse AddOrder(string date, string name, string state, string productType, string area)
 		{
+			decimal areaDecimal;
 			AddOrderResponse response = new AddOrderResponse();
 
 			if (DateTime.Parse(date) <= DateTime.Today)
@@ -50,7 +51,8 @@ namespace SGFlooring.BLL
 				return response;
 			}
 
-			else if (area <= 0M)
+			
+			else if (!(decimal.TryParse(area, out areaDecimal) && decimal.Parse(area) <= 0M))
 			{
 				response.Success = false;
 				response.Message = "Area must be greater than zero";
@@ -121,7 +123,7 @@ namespace SGFlooring.BLL
 				State = state,
 				TaxRate = taxRate,
 				ProductType = productType,
-				Area = area,
+				Area = areaDecimal,
 				CostPerSquareFoot = costPerSquareFoot,
 				LaborCostPerSquareFoot = laborCostPerSquareFoot,
 			};
