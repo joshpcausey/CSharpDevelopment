@@ -1,3 +1,11 @@
 #contentRows .col {
     padding-top: 2%;
 }
+
+#addMoney .btn-success {
+  margin-top: 3%;
+}
+
+.margin-top {
+  margin-top: 3%;
+}

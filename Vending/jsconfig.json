@@ -1,8 +1,8 @@
 {
-    "typeAcquisition": {
-        "include": [
-            "jquery",
-            "bootstrap"
-        ]
-    }
+  "typeAcquisition": {
+    "include": [
+      "jquery",
+      "bootstrap"
+    ]
+  }
 }

@@ -2,41 +2,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vending</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vending</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md text-center">
-                <h1>Vending Machine</h1>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md text-center">
+        <h1>Vending Machine</h1>
+        <ul id="errorMessage">
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row" id="contentRows">
+
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row"></div>
+        <div class="col-md-12">
+          <h2 class="text-center">Total $ In</h2>
+        </div>
+        <form id="addMoney">
+          <div class="row">
+            <div class="col">
+              <input id="totalAmmountAdded" class="form-control" type="text" placeholder="Ammount" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button id="addDollar" type="button" class="btn btn-success">Add Dollar</button>
+            </div>
+            <div class="col text-center">
+              <button id="addQuarter" type="button" class="btn btn-success">Add Quarter</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button id="addDollar" type="button" class="btn btn-success">Add Dime</button>
+            </div>
+            <div class="col text-center">
+              <button id="addQuarter" type="button" class="btn btn-success">Add Nickel</button>
+            </div>
+          </div>
+        </form>
+        <hr>
+        <form id="buyItemForm">
+          <div class="row">
+            <div class="col">
+              <h2 class="text-center">Messages</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input id="totalAmmountAdded" class="form-control" type="text" placeholder="" readonly>
+            </div>
+          </div>
+          <div class="row margin-top">
+            <div class="col">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Item:</span>
+                </div>
+                <input type="text" id="itemNumber" class="form-control" aria-label="Item" aria-describedby="basic-addon1">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button id="butItemButton" type="button" class="btn btn-primary">Make Purchase</button>
+            </div>
+          </div>
+        </form>
         <hr>
         <div class="row">
-            <div class="col-md-8">
-                <div class="row" id="contentRows">
-
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h2 class="text-center">Total $ In</h2>
-            </div>
+          <div class="col-md-12">
+            <h2 class="text-center">Change</h2>
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="home.js"></script>
 
 </html>
