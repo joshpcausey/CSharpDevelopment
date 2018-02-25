@@ -99,6 +99,7 @@ function buyItem() {
         messageForChange += " Pennie(s): " + pennies;
       }
       $('#changeReturnAmmount').attr('placeholder', messageForChange);
+      $('#errorMessages').attr('placeholder', '');
       removeItems();
       loadItems();
     },
