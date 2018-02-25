@@ -1,7 +1,14 @@
 //ts-check
 $(document).ready(function() {
   loadItems();
+
+  $('#contentRows').on("click", ".clickedCard", function() {
+    var id = $(this).find('p').attr('id');;
+    $('#itemNumber').attr('placeholder', id);
+  });
 });
+
+
 
 function loadItems() {
   var contentRows = $('#contentRows');
@@ -16,7 +23,7 @@ function loadItems() {
         price = item.price;
         quantity = item.quantity;
 
-        var row = '<div class="col"><div class="card" style="width: 18rem;"><div class="card-body">';
+        var row = '<div class="col"><div class="card" style="width: 18rem;"><div class="card-body clickedCard">';
         row += '<p id="' + id + '"">' + id + '</p>';
         row += '<h5 class="card-title text-center">' + name + '</h5>';
         row += '<p class="card-text text-center">$' + price + '</p>';
