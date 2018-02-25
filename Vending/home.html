@@ -35,7 +35,7 @@
         <form id="addMoney">
           <div class="row">
             <div class="col">
-              <input id="totalAmmountAdded" class="form-control" type="text" placeholder="Ammount" readonly>
+              <input id="totalAmmountAdded" class="form-control" type="text" placeholder="Amount" readonly>
             </div>
           </div>
           <div class="row">
@@ -48,10 +48,10 @@
           </div>
           <div class="row">
             <div class="col text-center">
-              <button id="addDollar" type="button" class="btn btn-success">Add Dime</button>
+              <button id="addDime" type="button" class="btn btn-success">Add Dime</button>
             </div>
             <div class="col text-center">
-              <button id="addQuarter" type="button" class="btn btn-success">Add Nickel</button>
+              <button id="addNickel" type="button" class="btn btn-success">Add Nickel</button>
             </div>
           </div>
         </form>
@@ -64,7 +64,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <input id="itemAdded" class="form-control" type="text" placeholder="" readonly>
+              <input id="errorMessages" class="form-control" type="text" placeholder="" readonly>
             </div>
           </div>
           <div class="row margin-top">
@@ -79,7 +79,7 @@
           </div>
           <div class="row">
             <div class="col text-center">
-              <button id="butItemButton" type="button" class="btn btn-primary">Make Purchase</button>
+              <button id="buyItem" type="button" class="btn btn-primary">Make Purchase</button>
             </div>
           </div>
         </form>
@@ -88,9 +88,15 @@
           <div class="col-md-12">
             <h2 class="text-center">Change</h2>
           </div>
-          <div class="col">
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input id="changeReturnAmmount" class="form-control" type="text" placeholder="" readonly>
           </div>
-          <div class="col">
+        </div>
+        <div class="row">
+          <div class="col-md-12 margin-top text-center">
+            <button id="changeReturn" type="button" class="btn btn-primary">Change Return</button>
           </div>
         </div>
       </div>
