@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Product.cs" />
-    <Compile Include="Enums\State.cs" />
     <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\IStateRepository.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\AddOrderResponse.cs" />
     <Compile Include="Responses\EditOrderResponse.cs" />
     <Compile Include="Responses\FindOrderResponse.cs" />
     <Compile Include="Responses\LoadOrderResponse.cs" />
     <Compile Include="Responses\RemoveOrderResponse.cs" />
+    <Compile Include="Tax.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

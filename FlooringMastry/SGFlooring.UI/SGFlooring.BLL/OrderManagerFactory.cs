@@ -17,9 +17,9 @@ namespace SGFlooring.BLL
 			switch (mode)
 			{
 				case "Memory":
-					return new OrderManager(new MemoryTestRepository());
+					return new OrderManager(new MemoryTestRepository(), new InMemoryStateRepository(), new InMemoryProductRepository());
 				default:
-					return new OrderManager(new FileTestRepository());
+					return new OrderManager(new FileTestRepository(), new FileStateRepository(), new FileProductRepository());
 			}
 		}
 	}

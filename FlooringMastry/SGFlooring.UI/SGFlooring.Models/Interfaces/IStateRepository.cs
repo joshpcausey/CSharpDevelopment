@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SGFlooring.Models.Enums
+namespace SGFlooring.Models.Interfaces
 {
-	public enum Product
+	public interface IStateRepository
 	{
-		Carpet,
-		Laminate,
-		Tile,
-		Wood
+		List<Tax> GetEveryState();
 	}
 }

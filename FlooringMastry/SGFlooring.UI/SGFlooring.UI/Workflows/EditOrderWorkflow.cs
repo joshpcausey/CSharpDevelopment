@@ -1,5 +1,4 @@
 ﻿using SGFlooring.BLL;
-using SGFlooring.Models.Enums;
 using SGFlooring.Models.Responses;
 using System;
 using System.Collections.Generic;
@@ -51,21 +50,21 @@ namespace SGFlooring.UI.Workflows
 				return;
 			}
 
-			else if(!Enum.IsDefined(typeof(State), editedState))
-			{
-				Console.WriteLine($"Not a valid State. You typed {editedState}");
-				Console.WriteLine("Press any key to contine...");
-				Console.ReadKey();
-				return;
-			}
+			//else if(!Enum.IsDefined(typeof(State), editedState))
+			//{
+			//	Console.WriteLine($"Not a valid State. You typed {editedState}");
+			//	Console.WriteLine("Press any key to contine...");
+			//	Console.ReadKey();
+			//	return;
+			//}
 
-			else if(!Enum.IsDefined(typeof(Product), editedProductType))
-			{
-				Console.WriteLine($"Not a valid Product. You typed {editedProductType}");
-				Console.WriteLine("Press any key to contine...");
-				Console.ReadKey();
-				return;
-			}
+			//else if(!Enum.IsDefined(typeof(Product), editedProductType))
+			//{
+			//	Console.WriteLine($"Not a valid Product. You typed {editedProductType}");
+			//	Console.WriteLine("Press any key to contine...");
+			//	Console.ReadKey();
+			//	return;
+			//}
 			decimal taxRate;
 			switch (editedState)
 			{

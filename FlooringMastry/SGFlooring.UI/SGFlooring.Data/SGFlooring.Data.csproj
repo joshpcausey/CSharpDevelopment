@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileProductRepository.cs" />
+    <Compile Include="FileStateRepository.cs" />
     <Compile Include="FileTestRepository.cs" />
+    <Compile Include="InMemoryProductRepository.cs" />
+    <Compile Include="InMemoryStateRepository.cs" />
     <Compile Include="MemoryTestRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

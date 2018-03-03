@@ -1,5 +1,5 @@
-﻿using SGFlooring.Models;
-using SGFlooring.Models.Enums;
+﻿using SGFlooring.Data;
+using SGFlooring.Models;
 using SGFlooring.Models.Interfaces;
 using SGFlooring.Models.Responses;
 using System;
@@ -13,15 +13,18 @@ namespace SGFlooring.BLL
 	public class OrderManager
 	{
 		private IOrderRepository _orderRepository;
+		private IStateRepository _stateRepository;
+		private IProductRepository _productRepository;
 
-		public OrderManager(IOrderRepository orderRepository)
+		public OrderManager(IOrderRepository orderRepository, IStateRepository stateRepository, IProductRepository productRepository)
 		{
 			_orderRepository = orderRepository;
+			_stateRepository = stateRepository;
+			_productRepository = productRepository;
 		}
 
 		public AddOrderResponse AddOrder(string date, string name, string state, string productType, string area)
 		{
-			decimal areaDecimal;
 			AddOrderResponse response = new AddOrderResponse();
 
 			if (DateTime.Parse(date) <= DateTime.Today)
@@ -31,84 +34,61 @@ namespace SGFlooring.BLL
 				return response;
 			}
 
-			else if (name == "")
+			if (name == "")
 			{
 				response.Success = false;
 				response.Message = "Name can not be blank";
 				return response;
 			}
 
-			else if (!Enum.IsDefined(typeof(State), state))
+			List<Tax> allTaxForValidation = new List<Tax>();
+			allTaxForValidation = _stateRepository.GetEveryState();
+			bool isValidState = false;
+			foreach(var currentTax in allTaxForValidation)
+			{
+				if(state == currentTax.StateAbbreviation || state == currentTax.StateName)
+				{
+					isValidState = true;
+				}
+			}
+			if (!isValidState)
 			{
 				response.Success = false;
 				response.Message = "The customers state must be a valid state we have operations in.";
 				return response;
 			}
-			else if (!Enum.IsDefined(typeof(Product), productType))
+
+			List<Product> allProductsForValidation = new List<Product>();
+			allProductsForValidation = _productRepository.GetAllProducts();
+			bool isValidProduct = false;
+			foreach(var currentProduct in allProductsForValidation)
+			{
+				if(productType == currentProduct.ProductType)
+				{
+					isValidProduct = true;
+				}
+			}
+			if (!isValidProduct)
 			{
 				response.Success = false;
 				response.Message = "The input product must be a product we stock";
 				return response;
 			}
 
-			
-			else if (!(decimal.TryParse(area, out areaDecimal) && decimal.Parse(area) <= 0M))
+			if ((decimal.TryParse(area, out decimal areaDecimal) && decimal.Parse(area) <= 0M))
 			{
 				response.Success = false;
 				response.Message = "Area must be greater than zero";
 				return response;
 			}
 
-			decimal taxRate;
-			switch (state)
-			{
-				case "OH":
-					taxRate = 6.25M;
-					break;
-				case "PA":
-					taxRate = 6.75M;
-					break;
-				case "MI":
-					taxRate = 5.75M;
-					break;
-				default:
-					taxRate = 6.00M;
-					break;
-			}
+			Tax stateForTaxRate = allTaxForValidation.Single(tax => tax.StateName == state || tax.StateAbbreviation == state);
+			decimal taxRate = stateForTaxRate.TaxRate;
 
-			decimal costPerSquareFoot = decimal.MinValue;
-			switch (productType)
-			{
-				case "Carpet":
-					costPerSquareFoot = 2.25M;
-					break;
-				case "Laminate":
-					costPerSquareFoot = 1.75M;
-					break;
-				case "Tile":
-					costPerSquareFoot = 3.50M;
-					break;
-				case "Wood":
-					costPerSquareFoot = 5.15M;
-					break;
-			}
+			Product productForCost = allProductsForValidation.Single(p => p.ProductType == productType);
+			decimal costPerSquareFoot = productForCost.CostPerSquareFoot;
 
-			decimal laborCostPerSquareFoot = decimal.MinValue;
-			switch (productType)
-			{
-				case "Carpet":
-					laborCostPerSquareFoot = 2.10M;
-					break;
-				case "Laminate":
-					laborCostPerSquareFoot = 2.10M;
-					break;
-				case "Tile":
-					laborCostPerSquareFoot = 4.15M;
-					break;
-				case "Wood":
-					laborCostPerSquareFoot = 4.75M;
-					break;
-			}
+			decimal laborCostPerSquareFoot = productForCost.LaborCostPerSquareFoot;
 
 			int orderNumberToInsert = 1;
 			if (_orderRepository.LoadOrder(date).Count > 0)
