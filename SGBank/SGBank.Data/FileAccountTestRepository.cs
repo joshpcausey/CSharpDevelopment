@@ -51,33 +51,24 @@ namespace SGBank.Data
 
 		public void SaveAccount(Account account)
 		{
-			string accountTypeToWrite = "Error";
-			switch (account.Type)
+			string line = $"{account.AccountNumber},{account.Name},{account.Balance},{account.Type.ToString()[0]}";
+			string[] everyLine = File.ReadAllLines(path);
+
+			using (StreamWriter writer = new StreamWriter(path))
 			{
-				case AccountType.Free:
-					accountTypeToWrite = "F";
-					break;
-				case AccountType.Basic:
-					accountTypeToWrite = "B";
-					break;
-				case AccountType.Premium:
-					accountTypeToWrite = "P";
-					break;
-			}
-			string[] rows = File.ReadAllLines(path);
-			int lineToEdit = 0;
-			foreach (var row in rows)
-			{
-				string[] columns = row.Split(',');
-				if (columns[0] == account.AccountNumber)
+				foreach (var fileline in everyLine)
 				{
-					string[] arrLine = File.ReadAllLines(path);
-					arrLine[lineToEdit] = $"{account.AccountNumber},{account.Name},{account.Balance},{accountTypeToWrite}";
-					File.WriteAllLines(path, arrLine);
-					break;
+					string[] columns = fileline.Split(',');
+
+					if (account.AccountNumber == columns[0])
+					{
+						writer.WriteLine(line);
+					}
+					else
+					{
+						writer.WriteLine(fileline);
+					}
 				}
-				lineToEdit += 1;
-				
 			}
 		}
 	}

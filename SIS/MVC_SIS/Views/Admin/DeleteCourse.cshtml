@@ -1,0 +1,21 @@
+﻿@model Exercises.Models.Data.Course
+@{
+    ViewBag.Title = "DeleteCourse";
+}
+
+<h2>DeleteCourse</h2>
+@*@using (Html.BeginForm("DeleteStatePost", "Admin", FormMethod.Post))
+{
+    <h2 class="text-center">Are you sure you want to delete @Model.StateName?</h2>
+    @Html.HiddenFor(m => m.StateAbbreviation)
+    <a href="~/Views/Home/Index.cshtml"><button type="button" class="btn">Cancel</button></a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+}*@
+
+@using (Html.BeginForm("DeleteCoursePost", "Admin", FormMethod.Post))
+{
+    <h2 class="text-center">Are you sure you want to delete @Model.CourseName?</h2>
+    @Html.HiddenFor(m => m.CourseId)
+    @Html.ActionLink("Cancel", "Courses", "Admin")
+    <button type="submit" class="btn btn-danger">Delete</button>
+}

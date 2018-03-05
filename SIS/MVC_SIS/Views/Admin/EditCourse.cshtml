@@ -1,0 +1,14 @@
+﻿@model Exercises.Models.Data.Course
+@{
+    ViewBag.Title = "EditCourse";
+}
+
+<h2>EditCourse</h2>
+@using (Html.BeginForm("EditCourse", "Admin", FormMethod.Post))
+{
+    <label for="CourseId">Course ID</label>
+    @Html.TextBoxFor(m => m.CourseId, new { @class = "form-control", @readonly = "readonly", placeholder = Model.CourseId });
+    <label for="CourseName">Course Name</label>
+    @Html.TextBoxFor(m => m.CourseName, new { @class= "form-control", placeholder = Model.CourseName})
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
