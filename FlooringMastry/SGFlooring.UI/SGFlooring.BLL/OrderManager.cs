@@ -179,22 +179,7 @@ namespace SGFlooring.BLL
 				return response;
 			}
 
-			foreach (var order in allOrders)
-			{
-				Console.WriteLine();
-				Console.WriteLine($"{order.OrderNumber} | {order.OrderDate}");
-				Console.WriteLine(order.CustomerName);
-				Console.WriteLine(order.State);
-				Console.WriteLine(order.ProductType);
-				Console.WriteLine(order.MaterialCost);
-				Console.WriteLine(order.LaborCost);
-				Console.WriteLine(order.Tax);
-				Console.WriteLine(order.Total);
-				Console.WriteLine();
-			}
-
-			Console.WriteLine("Press any key to continue...");
-			Console.ReadKey();
+			response.AllOrders = allOrders;
 			response.Success = true;
 			response.Message = "Displayed Orders";
 			return response;
